@@ -13,6 +13,83 @@ Built by [MakerMods](https://makermods.ai) in collaboration with Vector Wang (or
   <p><em>MakerMods Upgraded XLeRobot performing bimanual pick and place tasks.</em></p>
 </div>
 
+
+---
+
+## Detailed Hardware Assembly & Fastener Guide (29-Motor Build)
+
+### 1. Motor Inventory & Bus Allocation (29x Feetech STS3215)
+
+| Subsystem | Board / Bus | Bus IDs | Motor Model | Gear Ratio | Voltage | Qty |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Left Follower Arm** | Left Board (12V) | `1–6` | **STS3215-C018** | 1:345 | 12V | 6 |
+| **Head / Pan-Tilt Neck** | Left Board (12V) | `7–8` | **STS3215-C018** | 1:345 | 12V | 2 |
+| **Right Follower Arm** | Right Board (12V) | `1–6` | **STS3215-C018** | 1:345 | 12V | 6 |
+| **Omni-Wheel Mobile Base** | Right Board (12V) | `7–9` | **STS3215-C018** | 1:345 | 12V | 3 |
+| **Left & Right Leader Arms (J1, J3)** | Leader Boards (7.4V) | `1, 3` | **STS3215-C044** | 1:191 | 7.4V | 4 |
+| **Left & Right Leader Arms (J2)** | Leader Boards (7.4V) | `2` | **STS3215-C001** | 1:345 | 7.4V | 2 |
+| **Left & Right Leader Arms (J4–J6)** | Leader Boards (7.4V) | `4, 5, 6` | **STS3215-C046** | 1:147 | 7.4V | 6 |
+
+> **Voltage Warning:** Keep the **12V** (`C018`) and **7.4V** (`C001`, `C044`, `C046`) buses strictly separated. Never connect a 12V PD cable to the Leader Arm controller boards.
+
+---
+
+### 2. Complete Fastener & Hardware Mapping
+
+| Fastener / Component | Qty | Placement & Subsystem |
+| :--- | :---: | :--- |
+| **`M2*6` Self-Tapping** *(from servo bags)* | ~130+ | Servo mounting ears (4 per joint) + 3× USB camera PCBs to printed faceplates (4 per camera) |
+| **`M3*6` Machine Screws** *(from servo bags)* | ~52 | Top servo output horns across all arms, neck, and wheel hubs |
+| **`M2.5*6`** | **8** | 2× Waveshare Servo Driver PCBs (4) + 2× USB Hub PCBs (4) onto 3D-printed standoffs |
+| **`FHCS M3*8`** | **15** | Head camera bracket to Neck Tilt (`ID 8`) + flush cover plates & cable retention clips |
+| **`FHCS M3*10`** | **4** | Left & Right Follower wrist camera brackets (2 per arm, paired with 4× `Hex Nut M3`) |
+| **`FHCS M3*12`** | **8** | Mounting the 2 Servo Driver enclosures & 2 USB Hub brackets to the Top Base frame (2 per bracket) |
+| **`FHCS M3*16`** | **21** | 3× Omni-Wheel module housings & bottom cart mesh clamps (7 per module + `Square Nut M3`) |
+| **`FHCS M3*20`** | **3** | Servo-side center spline screw on each of the 3 Omni-Wheel hubs (1 per wheel) |
+| **`FHCS M3*25`** | **50** | Top Base frame assembly, Follower Arm base-to-corner mounts, and IKEA cart mesh clamping (`Square Nut M3`) |
+| **`FHCS M3*30`** | **8** | Two-Part Neck mid-joint seam (4) + Neck pedestal base to Top Base plate (4) (`Square Nut M3`) |
+| **`FHCS M3*45`** | **4** | Outer corner clamp jaws locking around the rolled steel top lip of the IKEA cart (2 per side) |
+| **`Hex Nut M3`** | **7** | Follower wrist camera clamps (4) + Head camera bracket (2) + 1 spare |
+| **`Square Nut M3`** | ~75+ | Pre-loaded into all MakerMods side-sliding rectangular nut traps across Top Base, Neck, Arms & Wheels |
+| **`Bearing`** | **3** | Outer non-servo stub-axle support on each of the 3 Omni-Wheel modules (1 per wheel) |
+| **`SHCS M5*20`** | **3** | Outer stub-axle bolt passing through the ball bearing into the idle side of each Omni-Wheel hub (1 per wheel) |
+| **`SHCS M5*45`** | **9** | Heavy structural wheel hub / riser bolts across the 3 Omni-Wheel modules (3 per wheel) |
+| **`Square Nut M5`** | **12** | Captive M5 square nut pockets in the 3 Omni-Wheel modules (3× `M5*45` + 1× `M5*20` per wheel) |
+
+---
+
+### 3. Step-by-Step Build Sequence
+
+#### Phase A: Pre-Assembly Motor ID & Calibration Prep
+1. Label all 29 motors with a marker before installation (`L1–L8` for Left Arm + Head, `R1–R9` for Right Arm + Base Wheels, `TL1–TL6` and `TR1–TR6` for Leader Arms).
+2. Set both jumpers on each Waveshare Serial Bus Driver board to **Channel B (USB)**.
+3. Connect **one motor at a time** to assign unique IDs and `1,000,000` baudrate (`lerobot-setup-motors` for IDs `1–6`; Bambot / Feetech tool for Head `IDs 7–8` and Base Wheels `IDs 7–9`).
+
+#### Phase B: Follower & Leader Arms (4 Arms Total)
+1. **Joints 1–4 & 6:** Install both servo horns (secure top horn with `M3*6`, leave bottom horn screwless), seat motor with 4× `M2*6` screws, and attach links with 4× `M3*6` screws per side.
+2. **Joint 5 (Wrist Roll):** Install **1 horn only** (`M3*6`), secure motor with 2× `M2*6` front screws, and attach wrist bracket with 4× `M3*6` screws on both sides.
+3. **Follower Wrist Cameras:** Mount camera PCBs to faceplates with 4× `M2*6` screws, then clamp brackets onto both Follower wrists using **4× `FHCS M3*10`** and **4× `Hex Nut M3`**. Leave a 4–5 cm cable slack loop for wrist roll rotation.
+
+#### Phase C: 2-DoF Head & Two-Part Neck
+1. Join the upper and lower halves of the split neck column using **4× `FHCS M3*30`** + **`Square Nut M3`**.
+2. Install Neck Pan (`ID 7`) and Neck Tilt (`ID 8`) `C018` servos using `M2*6` and `M3*6` screws, routing the 3-pin cable internally through the neck channel.
+3. Mount the 3rd camera PCB to its faceplate (`4× M2*6`) and fasten the head bracket onto Neck Motor `ID 8` using **`FHCS M3*8`** (and **2× `Hex Nut M3`** if hex traps are present).
+
+#### Phase D: Top Base & IKEA RÅSKOG Cart Clamping
+1. Mount the 2 Waveshare Servo Driver PCBs and 2 USB Hub boards onto their printed standoffs using **8× `M2.5*6`** screws.
+2. Attach the 4 electronics enclosures to the Top Base frame with **8× `FHCS M3*12`** + **`Square Nut M3`**.
+3. Bolt the assembled neck pedestal onto the Top Base using **4× `FHCS M3*30`** + **`Square Nut M3`**.
+4. Snip single "X" openings in the IKEA cart's metal mesh for cable pass-throughs, route all USB/12V/5264 cables down before clamping, and lock the Top Base and Follower Arm corner mounts to the cart using **`FHCS M3*25`** (through the bottom mesh) and **4× `FHCS M3*45`** (over the top steel rim).
+
+#### Phase E: 3× Bearing-Supported Omni-Wheel Base Modules
+1. For each wheel module (`IDs 7, 8, 9`), load **4× `Square Nut M5`** into the hub pockets, clamp the omni-wheel between the drive and idle hub adapters with **3× `SHCS M5*45`** bolts, and press **1× `Bearing`** into the outer support arm.
+2. Mount the `C018` servo into the housing, attach the drive-side hub to the servo spline using **1× `FHCS M3*20`** (plus `M3*6` horn screws), and pass **1× `SHCS M5*20`** through the outer **`Bearing`** into the idle hub's `Square Nut M5`.
+3. Close the housing and clamp all 3 modules under the bottom mesh of the IKEA cart using **21× `FHCS M3*16`** + **`Square Nut M3`** (note: if `M3*25` is substituted on `XLRB02-012-02` + `XLRB02-011-03`, verify the tip does not touch the spinning omni-wheel or clamp face).
+4. Daisy-chain `ID 9 -> ID 8 -> ID 7` and route the extended 5264 cable up to the **Right Control Board**.
+
+
+
+
 ### At a glance
 
 - **Redesigned structural parts** -- two-part neck, bearing-supported wheel modules, quick-release power bank mount, organized hub and driver board enclosures. Only the head and SO-101 arm servo mounts are stock.
