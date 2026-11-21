@@ -87,8 +87,23 @@ Built by [MakerMods](https://makermods.ai) in collaboration with Vector Wang (or
 3. Close the housing and clamp all 3 modules under the bottom mesh of the IKEA cart using **21× `FHCS M3*16`** + **`Square Nut M3`** (note: if `M3*25` is substituted on `XLRB02-012-02` + `XLRB02-011-03`, verify the tip does not touch the spinning omni-wheel or clamp face).
 4. Daisy-chain `ID 9 -> ID 8 -> ID 7` and route the extended 5264 cable up to the **Right Control Board**.
 
+### 4. Assembly Videos
 
+- **3D assembly animation** (87 s, 1080p): [watch on YouTube](https://youtu.be/O8h7MvgHxmE), or
+  [`assets/videos/xlerobot_assembly.mp4`](assets/videos/xlerobot_assembly.mp4). It builds the robot phase by phase (E omni-wheel base
+  and cart, D top deck and arm mounts, C neck and head, B arms joint by joint and wrist cameras), with the fasteners and motor IDs from
+  this guide as captions.
+- **The finished robot** (22 s, vertical): [`assets/videos/xlerobot_assembled_real.mp4`](assets/videos/xlerobot_assembled_real.mp4).
 
+The animation is generated from [`urdf/`](urdf/) by [`tools/assembly_video/`](tools/assembly_video/). The URDF merges the printed
+parts into colour meshes, so it moves subsystems (hub, wheel modules, cart, neck, mounts, arm links), not single printed parts, and it
+does not model screws. It builds the base on the floor before the cart goes on, so the wheels stay visible. To render it again:
+
+```bash
+pip install -r tools/assembly_video/requirements.txt
+python tools/assembly_video/seg.py                       # split the merged base meshes into subsystems (once)
+python tools/assembly_video/assemble.py out.mp4          # full 1080p render; --stills 12,40 for preview frames, --t0/--t1 for a section
+```
 
 ---
 
