@@ -11,6 +11,7 @@ Built by [MakerMods](https://makermods.ai) in collaboration with Vector Wang (or
 <div align="center">
   <img src="assets/images/hero_shot_17_04_02_18.png" alt="MakerMods XLeRobot Hardware Upgrade" width="85%"/>
   <p><em>MakerMods Upgraded XLeRobot performing bimanual pick and place tasks.</em></p>
+  <p><a href="https://youtu.be/O8h7MvgHxmE"><b>▶ Watch the 3D assembly video</b></a> · <a href="#4-assembly-videos">all assembly videos</a></p>
 </div>
 
 
@@ -89,11 +90,25 @@ Built by [MakerMods](https://makermods.ai) in collaboration with Vector Wang (or
 
 ### 4. Assembly Videos
 
-- **3D assembly animation** (87 s, 1080p): [watch on YouTube](https://youtu.be/O8h7MvgHxmE), or
-  [`assets/videos/xlerobot_assembly.mp4`](assets/videos/xlerobot_assembly.mp4). It builds the robot phase by phase (E omni-wheel base
-  and cart, D top deck and arm mounts, C neck and head, B arms joint by joint and wrist cameras), with the fasteners and motor IDs from
-  this guide as captions.
-- **The finished robot** (22 s, vertical): [`assets/videos/xlerobot_assembled_real.mp4`](assets/videos/xlerobot_assembled_real.mp4).
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="68%">
+        <a href="https://youtu.be/O8h7MvgHxmE"><img src="assets/gifs/assembly-animation.gif" alt="3D assembly animation preview" width="100%"/></a>
+        <p><em>3D assembly animation (preview at 4× speed)</em><br/>
+        <a href="https://youtu.be/O8h7MvgHxmE"><b>▶ Watch on YouTube</b></a> · <a href="assets/videos/xlerobot_assembly.mp4">MP4, 87 s, 1080p</a></p>
+      </td>
+      <td align="center" width="32%">
+        <a href="assets/videos/xlerobot_assembled_real.mp4"><img src="assets/gifs/assembled-robot.gif" alt="The finished robot" width="100%"/></a>
+        <p><em>The finished robot</em><br/>
+        <a href="assets/videos/xlerobot_assembled_real.mp4">MP4, 22 s</a></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+The animation builds the robot phase by phase: E (omni-wheel base and cart), D (top deck and arm mounts), C (neck and head) and
+B (arms joint by joint, then the wrist cameras). The captions give the fasteners and motor IDs from this guide.
 
 The animation is generated from [`urdf/`](urdf/) by [`tools/assembly_video/`](tools/assembly_video/). The URDF merges the printed
 parts into colour meshes, so it moves subsystems (hub, wheel modules, cart, neck, mounts, arm links), not single printed parts, and it

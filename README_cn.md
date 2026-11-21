@@ -9,6 +9,7 @@
 <div align="center">
   <img src="assets/images/hero_shot_17_04_02_18.png" alt="MakerMods XLeRobot Hardware Upgrade" width="85%"/>
   <p><em>MakerMods 升级版 XLeRobot 正在执行双臂取放任务</em></p>
+  <p><a href="https://youtu.be/O8h7MvgHxmE"><b>▶ 观看 3D 组装视频</b></a> · <a href="#组装视频">全部组装视频</a></p>
 </div>
 
 ### 项目亮点
@@ -35,6 +36,27 @@
 ---
 
 ## 演示视频
+
+### 组装视频
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="68%">
+        <a href="https://youtu.be/O8h7MvgHxmE"><img src="assets/gifs/assembly-animation.gif" alt="3D 组装动画预览" width="100%"/></a>
+        <p><em>3D 组装动画（4 倍速预览）</em><br/>
+        <a href="https://youtu.be/O8h7MvgHxmE"><b>▶ 在 YouTube 观看</b></a> · <a href="assets/videos/xlerobot_assembly.mp4">MP4，87 秒，1080p</a></p>
+      </td>
+      <td align="center" width="32%">
+        <a href="assets/videos/xlerobot_assembled_real.mp4"><img src="assets/gifs/assembled-robot.gif" alt="组装完成的机器人" width="100%"/></a>
+        <p><em>组装完成的机器人</em><br/>
+        <a href="assets/videos/xlerobot_assembled_real.mp4">MP4，22 秒</a></p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+动画按阶段组装：E（全向轮底盘与推车）、D（顶层底板与机械臂支架）、C（颈部与头部）、B（逐个关节组装机械臂，然后是腕部相机）。字幕中的紧固件和电机 ID 来自英文 README 的组装指南。动画由 [`tools/assembly_video/`](tools/assembly_video/) 根据 [`urdf/`](urdf/) 生成，按子系统运动，不显示单个打印件和螺丝。
 
 **黑客松实战：深圳 Physical AI X OpenClaw 黑客松现场的 25 台升级版 XLeRobot**
 
