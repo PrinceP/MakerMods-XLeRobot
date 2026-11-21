@@ -90,6 +90,35 @@ Built by [MakerMods](https://makermods.ai) in collaboration with Vector Wang (or
 
 
 
+---
+
+## URDF (assembled model)
+
+[`urdf/`](urdf/) holds the assembled robot as a URDF with meshes: the MakerMods structure (cart, omniwheel base, two-part neck, arm
+mounts), two SO-101 arms, the pan/tilt head and camera frames. It is MakerMods' own package (Apache-2.0), published with the
+[MakerMods XLeRobot project on tnkr.ai](https://tnkr.ai/ryans-workspace/xlerobot), copied here unchanged so it sits next to the print
+files.
+
+- [`urdf/README.md`](urdf/README.md): source, licence, known issues (missing jaw collision meshes, lumped masses, arm mount height to
+  check), frames and the full joint tree with positions.
+- [`urdf/PARTS_3MF.md`](urdf/PARTS_3MF.md): inventory of the printed parts in the `.3mf` (names, counts, sizes, likely location).
+- A MuJoCo model built from it: [robotics-antigravity-plugin `xlerobot` branch, `xlerobot-sim` skill](https://github.com/PrinceP/robotics-antigravity-plugin/tree/xlerobot/plugins/robotics/skills/xlerobot-sim).
+
+### Note for agents: writing assembly instructions
+
+This repo is the place to produce step-by-step assembly instructions for the MakerMods XLeRobot. Sources, from most to least specific:
+
+1. The assembly guide above (motor allocation, fastener map, phases A–E).
+2. [`urdf/xlerobot.urdf`](urdf/xlerobot.urdf) for where things end up: arm bases at z 0.744 m and y ±0.137 m, head pan axis at 1.094 m,
+   joint axes and limits. Units are metres and radians; x forward, y left, z up from the floor.
+3. [`urdf/PARTS_3MF.md`](urdf/PARTS_3MF.md) and the `.3mf` itself for the printed parts and their counts.
+4. Photos in [`assets/mechanical/`](assets/mechanical/) (base wheel modules, arm mounts, neck, enclosures, power bank mount).
+5. Upstream XLeRobot assembly docs: [xlerobot.readthedocs.io](https://xlerobot.readthedocs.io/en/latest/hardware/index.html), and the
+   SO-ARM100 guide for the arms.
+
+Caveats to carry into any instructions: the URDF merges printed parts into colour meshes (no per-part poses); its masses are placeholders;
+check arm mount height on the real build (one build measured the arm base bottoms at 0.86 m against 0.744 m in the URDF).
+
 ### At a glance
 
 - **Redesigned structural parts** -- two-part neck, bearing-supported wheel modules, quick-release power bank mount, organized hub and driver board enclosures. Only the head and SO-101 arm servo mounts are stock.
